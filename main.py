@@ -7,6 +7,10 @@ for i, port in enumerate(ports):
 print("Enter the number of the port you would like to connect to by entering a number between 1 and ", i+1)
 port = ports[int(input())-1]
 print("Got the port ", port)
+port = str(port)
+port = port.split("(")[1]
+port = port.split(")")[0]
+print(port)
 ser = serial.Serial(port, 9600)
 while True:
     if ser.inWaiting() > 0:
