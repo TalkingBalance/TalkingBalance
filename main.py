@@ -1,6 +1,7 @@
 import serial
 import time
-import ports
+import utils
+import keyboard
 
 port = ports.select_port()
 ser = serial.Serial(port, 9600)
