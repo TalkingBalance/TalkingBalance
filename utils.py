@@ -11,3 +11,7 @@ def select_port():
     # A sort of hack to get the port value as a string
     port = str(ports[int(input())-1]).split("(")[1].split(")")[0]
     return port
+
+def send_command(ser, command, message):
+    ser.write(str.encode(command))
+    print(message)
