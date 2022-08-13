@@ -10,10 +10,10 @@ def select_port():
     print(f"Enter the number of the port you would like to connect too by entering a number between 1 and {i+1}")
     while True:
         chosenPort = input()
-        if isValidPortNumber(ports, chosenPort): return ports[int(chosenPort)-1].name
+        if is_valid_port_number(ports, chosenPort): return ports[int(chosenPort)-1].name
         print(f"{chosenPort} is not a valid port number. Please try again.")
 
-def isValidPortNumber(ports, chosenPort):
+def is_valid_port_number(ports, chosenPort):
     if not chosenPort.isnumeric(): return False
     if 1 <= int(chosenPort) <= len(ports): return True
     return False
