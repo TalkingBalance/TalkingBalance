@@ -2,7 +2,7 @@ import serial.tools.list_ports
 
 def select_port():
     ports = serial.tools.list_ports.comports(include_links=False)
-    print("Welcome to Talking Scientific Scales!")
+    if len(ports) == 1: return ports[0].name #No point in asking the user to choose a port if they only have one available
     print("Please select the port your scales are connected to from the following list. You are looking for something like USB-to-serial adaptor.")
     print("If your scales do not appear in the below list, disconnect and reconnect them and then restart this program.")
     for i, port in enumerate(ports):
