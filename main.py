@@ -22,3 +22,4 @@ print(f"Using {port}. If you haven't already please turn your scales on.")
 while True:
     if ser.inWaiting() > 0:
         print(ser.readline().decode("utf-8".strip()))
+    time.sleep(0.01)
