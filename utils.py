@@ -7,7 +7,7 @@ def select_port():
     print("If your scales do not appear in the below list, disconnect and reconnect them and then restart this program.")
     for i, port in enumerate(ports):
         print(i+1, ". ", port)
-    print("Enter the number of the port you would like to connect to by entering a number between 1 and ", i+1)
+    print("Enter the number of the port you would like to connect to by entering a number between 1 and ", i+1, ", followed by the enter key.")
     # A sort of hack to get the port value as a string
     port = str(ports[int(input())-1]).split("(")[1].split(")")[0]
     return port
