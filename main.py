@@ -19,7 +19,7 @@ ser = serial.Serial(port, 9600)
 scales = scales.Scales(ser)
 
 keyboard.add_hotkey("t", scales.send_command, args=["T", "Now tared."])
-keyboard.add_hotkey("u", scales.send_command, args=["U", "Switched units."])
+keyboard.add_hotkey("u", scales.send_command, args=["U", "Switched units.", "handleUnits"])
 keyboard.add_hotkey("o", scales.send_command, args=["O", "Scales have been switched off."])
 keyboard.add_hotkey("m", scales.send_command, args=["M", ""])
 keyboard.add_hotkey("f", scales.send_command, args=["F", "Changing mode."])

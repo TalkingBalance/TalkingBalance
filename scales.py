@@ -25,12 +25,11 @@ class Scales:
     def readRaw(self):
         return self.ser.readline().decode("utf-8").rstrip()
 
-    def send_command(self, command, message):
-        print(f"{message} {self.currentUnit}")
+    def send_command(self, command, message, optional):
+        print(message)
         self.ser.write(str.encode(command))
-        if command == 'U':
-            self.handleUnits()
-            print(self.currentUnit)
+        if optional:
+            getattr(self, optional)()
 
     def readMessage(self):
         message = self.readRaw()
@@ -57,10 +56,10 @@ class Scales:
         return parsed
 
     def handleUnits(self):
+        print("here")
         if self.currentUnit != 'unknown':
             for i, k in enumerate(self.units.keys()):
                 if k == self.currentUnit:
-                    print(f"k is {k} which is {self.currentUnit}")
                     if i == len(self.units)-1:
                         self.currentUnit = list(self.units.keys())[0]
                         break
