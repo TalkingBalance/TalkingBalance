@@ -17,7 +17,3 @@ def is_valid_port_number(ports, chosenPort):
     if not chosenPort.isnumeric(): return False
     if 1 <= int(chosenPort) <= len(ports): return True
     return False
-
-def send_command(ser, command, message):
-    ser.write(str.encode(command))
-    print(message)
