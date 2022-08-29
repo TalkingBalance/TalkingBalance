@@ -9,7 +9,7 @@ class Scales:
             return False
 
     def readRaw(self):
-        return self.ser.readline().decode("utf-8".strip())
+        return self.ser.readline().decode("utf-8").rstrip()
     
     def send_command(self, command, message):
         self.ser.write(str.encode(command))
