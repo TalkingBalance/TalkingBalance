@@ -31,5 +31,5 @@ print(f"Using {port}. If you haven't already please turn your scales on.")
 
 while True:
     if scales.hasMessageToDisplay():
-        print(scales.readRaw())
+        print(scales.readMessage())
     time.sleep(0.01)
