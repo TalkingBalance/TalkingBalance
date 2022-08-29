@@ -32,6 +32,7 @@ class Scales:
         message = self.readRaw()
         parsedMessage = self.parseMessage(message)
         if parsedMessage['type'] == 'measurementMessage':
+            self.currentUnit = parsedMessage['units']
             return f"{parsedMessage['direction']} {parsedMessage['value']} {self.units[parsedMessage['units']]}"
         else:
             return parsedMessage['raw']
