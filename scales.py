@@ -3,6 +3,17 @@ import re
 class Scales:
     def __init__(self, ser):
         self.ser = ser
+        #A dictionary of measurement units supported by the scales mapped to friendly names which are surfaced in measurement readings
+        self.units = {
+            "g": "grams",
+            "oz": "ounces",
+            "ozt": "troy ounces",
+            "dwt": "pennyweights",
+            "lb": "pounds",
+            "ct": "carats"
+        }
+        self.currentUnit = 'unknown'
+        
 
     def hasMessageToDisplay(self):
         if self.ser.inWaiting() > 0:
@@ -21,7 +32,7 @@ class Scales:
         message = self.readRaw()
         parsedMessage = self.parseMessage(message)
         if parsedMessage['type'] == 'measurementMessage':
-            return f"{parsedMessage['direction']} {parsedMessage['value']} {parsedMessage['units']}"
+            return f"{parsedMessage['direction']} {parsedMessage['value']} {self.units[parsedMessage['units']]}"
         else:
             return parsedMessage['raw']
 
