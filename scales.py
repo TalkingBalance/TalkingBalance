@@ -1,4 +1,3 @@
-from locale import currency
 import re
 
 
@@ -16,28 +15,27 @@ class Scales:
         }
         self.currentUnit = 'unknown'
 
-    def hasMessageToDisplay(self):
+    def has_message_to_display(self):
         if self.ser.inWaiting() > 0:
             return True
         else:
             return False
 
-    def readRaw(self):
+    def read_raw(self):
         return self.ser.readline().decode("utf-8").rstrip()
 
-    def send_command(self, command, message, optional):
+    def send_command(self, command, message, callback=None):
         print(message)
         self.ser.write(str.encode(command))
-        if optional:
-            getattr(self, optional)()
+        if callback:
+            getattr(self, callback)()
 
-    def readMessage(self):
-        message = self.readRaw()
+    def read_message(self):
+        message = self.read_raw()
         parsedMessage = self.parseMessage(message)
         if parsedMessage['type'] == 'measurementMessage':
             self.currentUnit = parsedMessage['units']
-            #return f"{parsedMessage['direction']} {parsedMessage['value']} {self.units[parsedMessage['units']]}"
-            return parsedMessage['raw']
+            return f"{parsedMessage['direction']} {parsedMessage['value']} {self.units[parsedMessage['units']]}"
         else:
             return parsedMessage['raw']
 
@@ -55,14 +53,15 @@ class Scales:
             parsed['type'] = 'measurementMessage'
         return parsed
 
-    def handleUnits(self):
-        print("here")
+    def update_current_unit(self):
         if self.currentUnit != 'unknown':
             for i, k in enumerate(self.units.keys()):
                 if k == self.currentUnit:
                     if i == len(self.units)-1:
                         self.currentUnit = list(self.units.keys())[0]
+                        print(f"Now using {self.units[self.currentUnit]}")
                         break
                     else:
                         self.currentUnit = list(self.units.keys())[i+1]
+                        print(f"Now using {self.units[self.currentUnit]}")
                         break
