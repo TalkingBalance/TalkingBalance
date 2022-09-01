@@ -21,7 +21,7 @@ scales = scales.Scales(ser)
 keyboard.add_hotkey("t", scales.send_command, args=["T", "Now tared."])
 keyboard.add_hotkey("u", scales.send_command, args=["U", "Switched units.", "update_current_unit"])
 keyboard.add_hotkey("o", scales.send_command, args=["O", "Scales have been switched off.", "turned_off_choice"])
-keyboard.add_hotkey("m", scales.send_command, args=["M", ""])
+keyboard.add_hotkey("m", scales.send_command, args=["M", "Changed mode"])
 keyboard.add_hotkey("f", scales.send_command, args=["F", "Changing mode."])
 keyboard.add_hotkey("c", scales.send_command, args=["C", "Calibration started."])
 keyboard.add_hotkey("p", scales.send_command, args=["P", ""])
@@ -32,4 +32,3 @@ print(f"Using {port}. If you haven't already please turn your scales on.")
 while True:
     if scales.has_message_to_display():
         print(scales.read_message())
-    time.sleep(0.01)
