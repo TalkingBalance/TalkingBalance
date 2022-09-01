@@ -51,7 +51,7 @@ class Scales:
             parsed['type'] = 'measurementMessage'
         return parsed
 
-    def update_current_unit(self):
+    def update_current_unit():
         if self.currentUnit != 'unknown':
             for i, k in enumerate(self.units.keys()):
                 if k == self.currentUnit:
@@ -63,3 +63,14 @@ class Scales:
                         self.currentUnit = list(self.units.keys())[i+1]
                         print(f"Now using {self.units[self.currentUnit]}")
                         break
+
+    def turned_off_choice(self):
+        print("The scales have now been turned off. Would you like to exit? [y/n]")
+        exit = input()
+        print(exit)
+        if "y" in exit:
+            print("Exiting...")
+            import sys
+            sys.exit()
+        else:
+            print("The program will stay open until closed with Control+C")

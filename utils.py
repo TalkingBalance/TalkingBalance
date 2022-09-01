@@ -17,3 +17,13 @@ def is_valid_port_number(ports, chosenPort):
     if not chosenPort.isnumeric(): return False
     if 1 <= int(chosenPort) <= len(ports): return True
     return False
+
+def scales_turned_off_choice():
+    print("The scales have now been turned off. Would you like to exit? [y/n]")
+    exit = input()
+    if exit == "y" or exit == "yes":
+        print("Exiting...")
+        import sys
+        sys.exit()
+    else:
+        print("The program will stay open until closed with Control+C")
