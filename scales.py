@@ -11,7 +11,8 @@ class Scales:
             "ozt": "troy ounces",
             "dwt": "pennyweights",
             "lb": "pounds",
-            "ct": "carats"
+            "ct": "carats",
+            "pcs": "pieces"
         }
         self.currentUnit = 'unknown'
 
