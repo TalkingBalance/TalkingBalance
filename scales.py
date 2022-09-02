@@ -43,7 +43,7 @@ class Scales:
         parsed = {}
         parsed['raw'] = message
         parsed['direction'] = message[0]  # + or -
-        parsed['value'] = re.search(r'\d.\d+|\d+', message).group() # 0.002 or 0123 (LB doesn't include a point)
+        parsed['value'] = re.search(r'\d+.\d+|\d+', message).group() # 0.002 or 0123 (LB doesn't include a point)
         parsed['units'] = re.search(r'[a-z]+', message).group()  # g, lb, ct etc
         if None in parsed.values():  # If any of our expressions didn't return a match assume it's not a measurement message
             parsed['type'] = 'other'
