@@ -11,8 +11,7 @@ class Scales:
             "ozt": "troy ounces",
             "dwt": "pennyweights",
             "lb": "pounds",
-            "ct": "carats",
-            "pcs": "pieces"
+            "ct": "carats"
         }
         self.currentUnit = 'unknown'
 
@@ -35,8 +34,9 @@ class Scales:
         message = self.read_raw()
         parsedMessage = self.parseMessage(message)
         if parsedMessage['type'] == 'measurementMessage':
-            self.currentUnit = parsedMessage['units']
-            return f"{parsedMessage['direction']} {parsedMessage['value']} {self.units[parsedMessage['units']]}"
+            if parsedMessage['units'] in self.units.keys():
+                self.currentUnit = parsedMessage['units']
+            return f"{parsedMessage['direction']} {parsedMessage['value']} {parsedMessage['units']}"
         else:
             return parsedMessage['raw']
 
@@ -52,7 +52,7 @@ class Scales:
             parsed['type'] = 'measurementMessage'
         return parsed
 
-    def update_current_unit():
+    def update_current_unit(self):
         if self.currentUnit != 'unknown':
             for i, k in enumerate(self.units.keys()):
                 if k == self.currentUnit:
