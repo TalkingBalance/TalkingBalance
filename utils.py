@@ -1,4 +1,8 @@
 import serial.tools.list_ports
+from os import system
+
+def set_title(title):
+    system(f"title {title}")
 
 def select_port():
     ports = serial.tools.list_ports.comports(include_links=False)
