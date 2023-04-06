@@ -6,6 +6,7 @@ import serial
 import scales
 import utils
 
+utils.set_title("Talking Scientific Scales")
 print("Welcome to Talking Scientific Scales!")
 
 try:
