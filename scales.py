@@ -14,6 +14,7 @@ class Scales:
             "ct": "carats"
         }
         self.currentUnit = 'unknown'
+        self.has_already_been_shown_disconnection_message = False
 
     def has_message_to_display(self):
         if self.ser.inWaiting() > 0:
