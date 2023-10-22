@@ -4,4 +4,10 @@ site_author: Theo Holroyd
 copyright: © Copyright 2023 Talking Balance
 theme:
   name: material
+nav:
+ - Home: index.md
+ - Getting Started: gettingStarted.md
+ - Download: download.md
+ - History: history.md
+ - Contact Us: contact.md
 plugins: []
