@@ -4,3 +4,4 @@ site_author: Theo Holroyd
 copyright: © Copyright 2023 Talking Balance
 theme:
   name: material
+plugins: []
