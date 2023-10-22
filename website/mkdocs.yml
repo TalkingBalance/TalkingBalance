@@ -2,3 +2,5 @@ site_name: Talking Balance
 site_description: The Penny Drops
 site_author: Theo Holroyd
 copyright: © Copyright 2023 Talking Balance
+theme:
+  name: material
