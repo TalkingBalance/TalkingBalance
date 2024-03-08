@@ -5,6 +5,7 @@ copyright: © Copyright 2023 Talking Balance
 theme:
   name: material
   custom_dir: overrides
+  logo: website/logo.png
 nav:
  - Home: index.md
  - Getting Started: gettingStarted.md
